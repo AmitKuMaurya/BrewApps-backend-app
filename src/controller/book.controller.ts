@@ -5,7 +5,7 @@ export const createBook = async(req : Request, res : Response, next : NextFuncti
 
     const {author,title,summary} : IBook = req.body;
 
-    const titleExist = await BookModel.findOne({titleName : title});
+    const titleExist = await BookModel.findOne({$or : [{title : title}]});
 
     if(titleExist) return next("can't use this title, it's been already registered !");
 
