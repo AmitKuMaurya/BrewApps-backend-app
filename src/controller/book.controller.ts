@@ -1,7 +1,7 @@
 import {NextFunction, Request, Response} from "express";
 import { BookModel, IBook } from "../model/book.model";
 
-exports.createBook = async(req : Request, res : Response, next : NextFunction) => {
+export const createBook = async(req : Request, res : Response, next : NextFunction) => {
 
     const {author,title,summary} : IBook = req.body;
 
@@ -17,7 +17,7 @@ exports.createBook = async(req : Request, res : Response, next : NextFunction) =
     })
 }
 
-exports.getBookList = async(req : Request, res : Response) => {
+export const getBookList = async(req : Request, res : Response) => {
     // have to implement search, filter and pagination.
     const books = await BookModel.find().lean();
     res.status(200).send({
@@ -26,7 +26,7 @@ exports.getBookList = async(req : Request, res : Response) => {
     });
 }
 
-exports.getABookDetails = async (req: Request, res : Response, next : NextFunction) => {
+export const getABookDetails = async (req: Request, res : Response, next : NextFunction) => {
     const {id} = req.params;
     const doesExist = await BookModel.findOne({_id : id});
     if(!doesExist) return next("This Book Doesn't Exist !");
@@ -38,7 +38,7 @@ exports.getABookDetails = async (req: Request, res : Response, next : NextFuncti
     });
 }
 
-exports.updateBook = async (req: Request, res : Response, next : NextFunction) => {
+export const updateBook = async (req: Request, res : Response, next : NextFunction) => {
     const {id} = req.params;
     const {author,summary,title} : IBook = req.body;
     const doesExist = await BookModel.findOne({_id : id});
@@ -52,7 +52,7 @@ exports.updateBook = async (req: Request, res : Response, next : NextFunction) =
     });
 }
 
-exports.deleteBook = async (req: Request, res : Response, next : NextFunction) => {
+export const deleteBook = async (req: Request, res : Response, next : NextFunction) => {
     const {id} = req.params;
     const doesExist = await BookModel.findOne({_id : id});
     if(!doesExist) return next("This Book Doesn't Exist !");
