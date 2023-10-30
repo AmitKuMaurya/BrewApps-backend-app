@@ -14,20 +14,20 @@
 
 - To run this project via deployed Link. use the below steps.
 
-  ```
+```http
   https://brewapps-backend.cyclic.app
-  ```
+ ```
 
 ### Get all books
 
-```
+```http
   GET https://brewapps-backend.cyclic.app/API/v1/books
 ```
 #### You will get all the books listing 
 
 ### Get a single book
 
-```
+```http
   GET https://brewapps-backend.cyclic.app/api/v1/book/${id}
 ```
 
@@ -37,19 +37,19 @@
 
 ### Add A New Book
 
-```
+```http
   POST https://brewapps-backend.cyclic.app//api/v1/book-create
 ```
 
 | Parameter      | Type     | Description                                           |
 | :------------- | :------- | :---------------------------------------------------- |
 | `title`        | `string` | **Required**. book title                              |
-| `author`       | `number` | **Required**. book author                             |
+| `author`       | `string` | **Required**. book author                             |
 | `description`  | `string` | **Required**. book description                        |
 
 ### Update book
 
-```
+```http
   PATCH https://brewapps-backend.cyclic.app/api/v1/book-update/${id}
 ```
 
@@ -59,7 +59,7 @@
 
 ### Delete book 
 
-```
+```http
   DELETE https://brewapps-backend.cyclic.app/api/v1/book-delete/${id}
 ```
 
@@ -70,7 +70,7 @@
 
 - To run this project, you will need not to add any environment variables to your .env everything is already added. follow the steps to mentioned below to run locally
 
-# Run_Locally
+# Run through local system
 
 Clone the project
 
@@ -98,8 +98,9 @@ Start the server
 - Please use the routes and parameters mentioned above on port - 5050 and replace this domain `https://brewapps-backend.cyclic.app` with this `http://localhost:5050/api/v1/books` only.
 -- now all the steps are the same as mentioned above from line no.21.
 
-# Status
-``` These both will ensure that the application is running or not
+## Status
+- These both will ensure that the application is running perfectly.
+``` 
 { msg: 'DataBase Connected Successfully 🌼' }
 { msg: 'Server is Listing on Port 5050 🤙' }
 ```
