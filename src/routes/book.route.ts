@@ -3,8 +3,8 @@ import { createBook, deleteBook, getABookDetails, getBookList, updateBook } from
 export const bookRouter = Router();
 
 bookRouter.get("/list",getBookList);
-bookRouter.get("/view",getABookDetails);
+bookRouter.get("/view/:id",getABookDetails);
 bookRouter.post("/create",createBook);
-bookRouter.delete("/delete",deleteBook);
-bookRouter.delete("/update",updateBook);
+bookRouter.delete("/delete/:id",deleteBook);
+bookRouter.delete("/update/:id",updateBook);
 
