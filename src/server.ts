@@ -1,13 +1,15 @@
-import express,{Request, Response, Express} from "express";
+import express,{Response, Express} from "express";
+import { dbConnection } from "./config/database";
 
 const app : Express = express();
-const PORT = 5959;
+const PORT = 5050;
 
-app.get("/home",(req : Request, res : Response)=>{
+app.get("/home",(res : Response)=>{
     res.send("Welcome home.")
 })
 
-app.listen(PORT,()=>{
+app.listen(PORT, async()=>{
+    await dbConnection();
     console.log({msg : `Server is Listing on Port ${PORT}`})
 })
 
