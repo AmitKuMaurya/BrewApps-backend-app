@@ -6,5 +6,5 @@ bookRouter.get("/list",getBookList);
 bookRouter.get("/view/:id",getABookDetails);
 bookRouter.post("/create",createBook);
 bookRouter.delete("/delete/:id",deleteBook);
-bookRouter.delete("/update/:id",updateBook);
+bookRouter.patch("/update/:id",updateBook);
 

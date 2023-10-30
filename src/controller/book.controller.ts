@@ -5,11 +5,12 @@ export const createBook = async(req : Request, res : Response, next : NextFuncti
 
     const {author,title,summary} : IBook = req.body;
 
-    const titleExist = await BookModel.find({ $and : [{title}]});
+    const titleExist = await BookModel.findOne({titleName : title});
 
     if(titleExist) return next("can't use this title, it's been already registered !");
 
-    const book = await BookModel.create(author, title, summary);
+    const book = await BookModel.create({author, title, summary});
+    await book.save();
 
     res.status(201).send({
         msg : `Book Created Successfully !`,
