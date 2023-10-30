@@ -11,6 +11,6 @@ app.get("/home",(res : Response)=>{
 
 const server : Server = app.listen(PORT, async()=>{
     await dbConnection();
-    console.log({msg : `Server is Listing on Port ${PORT}`})
+    console.log({msg : `Server is Listing on Port ${PORT} 🤙`})
 })
 

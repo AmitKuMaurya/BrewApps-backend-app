@@ -37,3 +37,31 @@ exports.getABookDetails = async (req: Request, res : Response, next : NextFuncti
         result : aBook
     });
 }
+
+exports.updateBook = async (req: Request, res : Response, next : NextFunction) => {
+    const {id} = req.params;
+    const {author,summary,title} : IBook = req.body;
+    const doesExist = await BookModel.findOne({_id : id});
+    if(!doesExist) return next("This Book Doesn't Exist !");
+    
+    const updateBook = await BookModel.updateOne({_id : id},{$set : {author, title, summary}});
+
+    res.status(200).send({
+        msg : `A Book Updated Successfully`,
+        result : updateBook
+    });
+}
+
+exports.deleteBook = async (req: Request, res : Response, next : NextFunction) => {
+    const {id} = req.params;
+    const doesExist = await BookModel.findOne({_id : id});
+    if(!doesExist) return next("This Book Doesn't Exist !");
+
+    const deleteBook = await BookModel.deleteOne({_id : id});
+    
+    res.status(200).send({
+        msg : `A Book Deleted Successfully`,
+        result : deleteBook
+    });
+    
+}
